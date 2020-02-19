@@ -11,6 +11,19 @@
 ##############################################################
 
 import datetime
+from os import system, name
+
+def clear(): 
+  
+    # Windows terminal
+    if name == 'nt': 
+        _ = system('cls') 
+  
+    # Linux terminal
+    else: 
+        _ = system('clear') 
+
+clear()
 
 print("\n\n")
 print("*"*35)
@@ -28,8 +41,23 @@ born = datetime.date(int(year),int(month),int(day))
 dayname = born.strftime("%A") 
 daysago = now - born
 left = birthday - now
+nextyr = datetime.timedelta(days=365)
 
-print("*"*35)
-print("\nThere are", left.days,"days left until your birthday!!\n")
-print("You were born on",born,"in the city of",city+".")
-print("This day",daysago.days,"days ago (HOLY sh%t you're old), was a",dayname+".")
+clear()
+
+if left.days < 0:
+    negativeyr = left + nextyr
+    print("*"*35)
+    print("\nYour birthday isn't until next year, but there are", negativeyr.days,"days left until your birthday!!\n")
+    print("You were born on",born,"in the city of",city+".")
+    print("This day",daysago.days,"days ago (HOLY sh%t you're old), was a",dayname+".\n")
+    print("*"*35)
+    print("\n\n")
+
+else:
+    print("*"*35)
+    print("\nThere are", left.days,"days left until your birthday!!\n")
+    print("You were born on",born,"in the city of",city+".")
+    print("This day",daysago.days,"days ago (HOLY sh%t you're old), was a",dayname+".\n")
+    print("*"*35)
+    print("\n\n")
