@@ -44,8 +44,11 @@ left = birthday - now
 nextyr = datetime.timedelta(days=365)
 
 clear()
+if daysago.days < 0:
+    print("Oh C'mon! You haven't enven been born yet!\nNice try..")
+    
 
-if left.days < 0:
+elif left.days < 0:
     negativeyr = left + nextyr
     print("*"*35)
     print("\nYour birthday isn't until next year, but there are", negativeyr.days,"days left until your birthday!!\n")
